@@ -41,7 +41,7 @@ public struct APIGateway {
       public let path: String
     }
     
-    public let resource: String
+    public let resource: String?
     public let path: String
     public let httpMethod: HTTPMethod
     
@@ -139,7 +139,7 @@ extension APIGateway.Request: Decodable {
     let method = try container.decode(String.self, forKey: .httpMethod)
     self.httpMethod = HTTPMethod(rawValue: method)
     self.path = try container.decode(String.self, forKey: .path)
-    self.resource = try container.decode(String.self, forKey: .resource)
+    self.resource = try container.decodeIfPresent(String.self, forKey: .resource)
     
     self.queryStringParameters = try container.decodeIfPresent(
       [String: String].self,
