@@ -28,7 +28,7 @@ public struct APIGateway {
         public let accountId: String?
       }
       
-      public let resourceId: String
+      public let resourceId: String?
       public let apiId: String
       public let resourcePath: String
       public let httpMethod: String
